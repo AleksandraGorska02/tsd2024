@@ -55,7 +55,7 @@ namespace GoldSavings.App.Services
         //instruction (you cannot use more than one semicolon).
 
        public static List<GoldPrice> ReadFromXml(string fileName) =>
-    XDocument.Load(fileName).Root.Elements("Price")
+         XDocument.Load(fileName).Root.Elements("Price")
         .Select(priceElement => new GoldPrice
         {
             Date = DateTime.Parse(priceElement.Element("Date").Value),

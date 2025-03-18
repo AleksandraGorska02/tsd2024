@@ -74,7 +74,7 @@ var whenToBuy = analysisService.GetWhenToBuy();
 
         List<GoldPrice> readPrices = GoldResultPrinter.ReadFromXml("goldPrices.xml");
         Console.WriteLine("Read from XML file:");
-        GoldResultPrinter.PrintPrices(readPrices, "Gold Prices");
+        //GoldResultPrinter.PrintPrices(readPrices, "Gold Prices");
 
         Console.WriteLine("\nGold Analyis Queries with LINQ Completed.");
 

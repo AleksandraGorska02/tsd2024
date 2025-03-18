@@ -65,16 +65,17 @@ public List<GoldPrice> GetPrices2020andMoreThan5(){
 
         //(query syntax) What are the averages of gold prices in 2020, 2023, 2024?
 
-        public List<double> GetAvg2020_2024()
+        public List<Double> GetAvg2020_2024()
         {
             var prices2020_2024 = _goldPrices.Where(p => p.Date.Year >= 2020 && p.Date.Year <= 2024);
             var groupedPrices = from p in prices2020_2024
                                 where p.Date.Year==2020 || p.Date.Year==2023 || p.Date.Year==2024
                                 group p by p.Date.Year;
 
-            var avgPrices = groupedPrices.Select(g => g.Average(p => p.Price)).ToList();
-            avgPrices = avgPrices.Select(p => Math.Round(p, 2)).ToList();
-            return avgPrices;
+            var avgPrices = from g in groupedPrices
+                            select g.Average(p => p.Price);
+            
+            return avgPrices.ToList();
         }
 
         //When it would be best to buy gold and sell it between 2020 and 2024? What would
